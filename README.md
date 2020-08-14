@@ -22,14 +22,19 @@ It's a API that returns the quantity of lines of the files in a GitHub repositor
 
 https://ghder.herokuapp.com/
 
-By Default, this address will return the Swagger documentation page.
+By Default, this address will return the Swagger documentation page. Is possible to execute (test) the API in this docs page.
 
-Is possible to execute (test) the API In the docs page.
+Calling the api in the browser: https://ghder.herokuapp.com/service/{userName}/{repoName}
+
+Ex: https://ghder.herokuapp.com/service/diegobarbosa/ghder
 
 
 ## Running the docker image localy
+Execute the following commands in your CMD:
 
+```console
 docker pull diegobarbosa/ghder
 
 docker run -d -p 8080:80 --name ghder diegobarbosa/ghder
+```
 
