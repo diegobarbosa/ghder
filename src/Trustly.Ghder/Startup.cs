@@ -12,8 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using Trustly.Ghder.Web.Utils;
 
-namespace Trustly.Ghder
+namespace Trustly.Ghder.Web
 {
     public class Startup
     {
@@ -65,6 +66,8 @@ namespace Trustly.Ghder
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");
             app.UseRewriter(option);
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseMvc();
         }

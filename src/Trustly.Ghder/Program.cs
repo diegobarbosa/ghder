@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Trustly.Ghder
+namespace Trustly.Ghder.Web
 {
     public class Program
     {

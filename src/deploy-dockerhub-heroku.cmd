@@ -1,8 +1,8 @@
-docker tag trustlyghder diegobarbosa/trustlyghder:latest
+docker tag ghder diegobarbosa/ghder:latest
 
 docker login
 
-docker push diegobarbosa/trustlyghder
+docker push diegobarbosa/ghder
 
 
 
@@ -10,10 +10,10 @@ heroku login
 
 heroku container:login
 
-docker tag trustlyghder registry.heroku.com/trustlyghder/web
+docker tag ghder registry.heroku.com/ghder/web
 
-docker push registry.heroku.com/trustlyghder/web
+docker push registry.heroku.com/ghder/web
 
-heroku container:release web -a trustlyghder
+heroku container:release web -a ghder
 
-explorer "https://trustlyghder.herokuapp.com/"
+explorer "https://ghder.herokuapp.com/"

@@ -1,1 +1,1 @@
-docker build -t trustlyghder .
+docker build -t ghder .
