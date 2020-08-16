@@ -25,9 +25,9 @@ https://ghder.herokuapp.com/
 
 By Default, this address will return the Swagger documentation page. Is possible to execute (test) the API in this docs page.
 
-Calling the api in the browser: https://ghder.herokuapp.com/service/{userName}/{repoName}
+Calling the api in the browser: https://ghder.herokuapp.com/api/service/{userName}/{repoName}
 
-Example: https://ghder.herokuapp.com/service/diegobarbosa/ghder
+Example: https://ghder.herokuapp.com/api/service/diegobarbosa/ghder
 
 
 ## Running the docker image localy
