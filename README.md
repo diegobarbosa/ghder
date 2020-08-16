@@ -12,13 +12,13 @@ It's a API that returns the quantity of lines of the files in a GitHub repositor
 - Visual Studio 2019
 - Asp.Net Mvc Core
 - C#
-- Xunit for tests
+- Xunit for tests 
 - HtmlAgilityPack for Html parsing
 - Swagger for API documentation
-- Docker
+- Docker - Each time the image is Built, the Test suite is executed
 - Heroku for Hosting (https://ghder.herokuapp.com/)
 - Docker Hub for the Image registry (https://hub.docker.com/repository/docker/diegobarbosa/ghder)
-- AppVeyor for CI - Each new commit trigger a Build: [![Build status](https://ci.appveyor.com/api/projects/status/e0gus2bb7iug9i74/branch/master?svg=true)](https://ci.appveyor.com/project/diegobarbosa/ghder/branch/master)
+- AppVeyor for CI - Each new commit triggers a Build and executes the Tests suite: [![Build status](https://ci.appveyor.com/api/projects/status/e0gus2bb7iug9i74/branch/master?svg=true)](https://ci.appveyor.com/project/diegobarbosa/ghder/branch/master)
 
 
 ## API EndPoint
