@@ -1,6 +1,6 @@
 # GHDER - GitHub Downloader
 
-[![Build status](https://ci.appveyor.com/api/projects/status/e0gus2bb7iug9i74?svg=true)](https://ci.appveyor.com/project/diegobarbosa/ghder)
+[![Build status](https://ci.appveyor.com/api/projects/status/e0gus2bb7iug9i74/branch/master?svg=true)](https://ci.appveyor.com/project/diegobarbosa/ghder/branch/master)
 
 
 ## Intro
