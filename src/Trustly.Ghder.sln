@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trustly.Ghder.Web", "Trustly.Ghder\Trustly.Ghder.Web.csproj", "{0A604DA3-C064-4964-A212-1CDE25CC86AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trustly.Ghder.Web", "Trustly.Ghder.Web\Trustly.Ghder.Web.csproj", "{0A604DA3-C064-4964-A212-1CDE25CC86AA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trustly.Ghder.Core", "Trustly.Ghder.Core\Trustly.Ghder.Core.csproj", "{F136EC8F-232E-4D95-812C-1F92B9A40099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trustly.Ghder.Tests", "Trustly.Ghder.Tests\Trustly.Ghder.Tests.csproj", "{0D1EFDA7-0B51-436E-B184-A6D18D70B300}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F136EC8F-232E-4D95-812C-1F92B9A40099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F136EC8F-232E-4D95-812C-1F92B9A40099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F136EC8F-232E-4D95-812C-1F92B9A40099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D1EFDA7-0B51-436E-B184-A6D18D70B300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1EFDA7-0B51-436E-B184-A6D18D70B300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1EFDA7-0B51-436E-B184-A6D18D70B300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1EFDA7-0B51-436E-B184-A6D18D70B300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

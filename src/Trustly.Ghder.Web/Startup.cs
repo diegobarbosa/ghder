@@ -61,7 +61,7 @@ namespace Trustly.Ghder.Web
 
 
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             var option = new RewriteOptions();
             option.AddRedirect("^$", "swagger");

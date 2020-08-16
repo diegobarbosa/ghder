@@ -3,17 +3,26 @@ WORKDIR /app
  
 # Copy csproj and restore as distinct layers
 COPY *.sln ./
-COPY Trustly.Ghder/*.csproj ./Trustly.Ghder/
+COPY Trustly.Ghder.Web/*.csproj ./Trustly.Ghder.Web/
 COPY Trustly.Ghder.Core/*.csproj ./Trustly.Ghder.Core/
+COPY Trustly.Ghder.Tests/*.csproj ./Trustly.Ghder.Tests/
 RUN dotnet restore Trustly.Ghder.sln
  
 # Copy everything else and build
 COPY . ./
+RUN dotnet build
+
+
+WORKDIR Trustly.Ghder.Tests/
+RUN dotnet test --logger:trx
+
+
+WORKDIR /app
 # publish is executed inside each project folder. So, is necessary put all Binarys in a upper level folder.
-RUN dotnet publish Trustly.Ghder.sln -c Release -o ../out
+RUN dotnet publish Trustly.Ghder.Web/Trustly.Ghder.Web.csproj -c Release -o ../out
  
 # Build runtime image
 FROM microsoft/dotnet:2.2-aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env app/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet Trustly.Ghder.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Trustly.Ghder.Web.dll
