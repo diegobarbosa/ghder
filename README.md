@@ -32,7 +32,7 @@ Calling the api in the browser: https://ghder.herokuapp.com/api/service/{userNam
 Example: https://ghder.herokuapp.com/api/service/diegobarbosa/ghder
 
 
-## Running the docker image localy
+## Running the docker image locally
 Execute the following commands in your CMD:
 
 ```console
