@@ -38,4 +38,6 @@ docker pull diegobarbosa/ghder
 
 docker run -d -p 8080:80 --name ghder diegobarbosa/ghder
 ```
+Access the url http://localhost:8080.
+
 
