@@ -11,11 +11,12 @@ It's a API that returns the quantity of lines of the files in a GitHub repositor
 - Visual Studio 2019
 - Asp.Net Mvc Core
 - C#
-- HtmlAgilityPack for Html page parsing
+- Xunit for tests
+- HtmlAgilityPack for Html parsing
 - Swagger for API documentation
 - Docker
-- Heroku for Hosting
-- Docker Hub for the Image registry
+- Heroku for Hosting (https://ghder.herokuapp.com/)
+- Docker Hub for the Image registry (https://hub.docker.com/repository/docker/diegobarbosa/ghder)
 
 
 ## API EndPoint
@@ -26,7 +27,7 @@ By Default, this address will return the Swagger documentation page. Is possible
 
 Calling the api in the browser: https://ghder.herokuapp.com/service/{userName}/{repoName}
 
-Ex: https://ghder.herokuapp.com/service/diegobarbosa/ghder
+Example: https://ghder.herokuapp.com/service/diegobarbosa/ghder
 
 
 ## Running the docker image localy
