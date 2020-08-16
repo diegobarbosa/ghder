@@ -1,7 +1,5 @@
 # GHDER - GitHub Downloader
 
-[![Build status](https://ci.appveyor.com/api/projects/status/e0gus2bb7iug9i74/branch/master?svg=true)](https://ci.appveyor.com/project/diegobarbosa/ghder/branch/master)
-
 
 ## Intro
 
@@ -20,7 +18,7 @@ It's a API that returns the quantity of lines of the files in a GitHub repositor
 - Docker
 - Heroku for Hosting (https://ghder.herokuapp.com/)
 - Docker Hub for the Image registry (https://hub.docker.com/repository/docker/diegobarbosa/ghder)
-- AppVeyor fo CI - Each new commit trigger a Build
+- AppVeyor for CI - Each new commit trigger a Build: [![Build status](https://ci.appveyor.com/api/projects/status/e0gus2bb7iug9i74/branch/master?svg=true)](https://ci.appveyor.com/project/diegobarbosa/ghder/branch/master)
 
 
 ## API EndPoint
