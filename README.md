@@ -27,9 +27,20 @@ https://ghder.herokuapp.com/
 
 By Default, this address will return the Swagger documentation page. Is possible to execute (test) the API in this docs page.
 
-Calling the api in the browser: https://ghder.herokuapp.com/api/service/{userName}/{repoName}
+The API has the form: https://ghder.herokuapp.com/api/service/{userName}/{repoName}
 
-Example: https://ghder.herokuapp.com/api/service/diegobarbosa/ghder
+The API accepts Json and XML. Calling the API with curl: 
+
+```
+curl -X GET "https://ghder.herokuapp.com/api/Service/diegobarbosa/ghdertest" -H "accept: text/json"
+curl -X GET "https://ghder.herokuapp.com/api/Service/diegobarbosa/ghdertest" -H "accept: text/xml"
+
+```
+
+Without accepts Header, the api defaults to Json format. Calling from the brownser:
+```
+https://ghder.herokuapp.com/api/Service/diegobarbosa/ghdertest
+```
 
 
 ## Running the docker image locally
