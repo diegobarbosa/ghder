@@ -80,7 +80,7 @@ namespace Trustly.Ghder.Core.Downloader
                     throw new DomainException($"GitHub Project not found. {projectUrl}");
                 }
 
-                throw ex;
+                throw;
             }
 
         }
@@ -193,7 +193,7 @@ namespace Trustly.Ghder.Core.Downloader
                     throw;
                 }
 
-               
+
 
                 file.NumberOfLines = linesAndSize.NumberOfLines;
                 file.Size = linesAndSize.Size;

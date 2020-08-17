@@ -30,12 +30,26 @@ namespace Trustly.Ghder.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(config =>
+            {
+                config.RespectBrowserAcceptHeader = true;
+                config.ReturnHttpNotAcceptable = true;
+
+            })
+            .AddXmlDataContractSerializerFormatters()
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSwaggerGen(c =>
             {
 
-                c.SwaggerDoc(apiVersion, new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API Docs", Version = apiVersion });
+                c.SwaggerDoc(apiVersion, 
+                    new Microsoft.OpenApi.Models.OpenApiInfo 
+                    { 
+                        Title = "API Docs", 
+                        Version = apiVersion 
+                    });
+
+                c.SchemaFilter<CustomXmlSchemaFilter>();
             });
         }
 
@@ -52,7 +66,9 @@ namespace Trustly.Ghder.Web
             }
 
 
-            app.UseSwagger();
+            app.UseSwagger(config=> { 
+                        
+            });
 
             app.UseSwaggerUI(c =>
             {
