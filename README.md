@@ -37,7 +37,7 @@ curl -X GET "https://ghder.herokuapp.com/api/Service/diegobarbosa/ghdertest" -H 
 
 ```
 
-Without accepts Header, the api defaults to Json format. Calling from the brownser:
+Without accepts Header, the api defaults to Json format. Calling from the browser:
 ```
 https://ghder.herokuapp.com/api/Service/diegobarbosa/ghdertest
 ```
