@@ -13,11 +13,11 @@ namespace Trustly.Ghder.Tests
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void DownloadProjectInfo_NoUserName_Fails(string input)
+        public async void DownloadProjectInfo_NoUserName_Fails(string input)
         {
             var service = new GHProjectDownloaderService();
 
-            var ex = Assert.Throws<DomainException>(() => service.DownloadProjectInfo(input, "project"));
+            var ex = await Assert.ThrowsAsync<DomainException>(() => service.DownloadProjectInfoAsync(input, "project"));
 
             Assert.Equal("userName not informed", ex.Message);
         }
@@ -25,33 +25,46 @@ namespace Trustly.Ghder.Tests
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void DownloadProjectInfo_NoProjectName_Fails(string input)
+        public async void DownloadProjectInfo_NoProjectName_Fails(string input)
         {
             var service = new GHProjectDownloaderService();
 
-            var ex = Assert.Throws<DomainException>(() => service.DownloadProjectInfo("user", input));
+            var ex = await Assert.ThrowsAsync<DomainException>(() => service.DownloadProjectInfoAsync("user", input));
 
             Assert.Equal("projectName not informed", ex.Message);
         }
 
         [Fact]
-        public void DownloadProjectInfo_NoExistantProject_Fails()
+        public async void DownloadProjectInfo_NoExistantProject_Fails()
         {
             var service = new GHProjectDownloaderService();
 
-            var ex = Assert.Throws<DomainException>(() => service.DownloadProjectInfo("diegobarbosa", "SomeRandomName"));
+            var ex = await Assert.ThrowsAsync<DomainException>(() => service.DownloadProjectInfoAsync("diegobarbosa", "SomeRandomName"));
 
-            Assert.StartsWith("GitHub Project not found.", ex.Message);
+            Assert.StartsWith("GitHub Repository not found:", ex.Message);
         }
 
         [Fact]
-        public void DownloadProjectInfo_Sucess()
+        public async void DownloadProjectInfo_EmptyFolder_Fails()
+        {
+            var service = new GHProjectDownloaderService();
+
+            var ex = await Assert.ThrowsAsync<DomainException>(() => service.DownloadProjectInfoAsync("diegobarbosa", "ghdertestempty"));
+
+            Assert.StartsWith("No Rows found in:", ex.Message);
+        }
+
+        
+
+
+        [Fact]
+        public async void DownloadProjectInfo_Sucess()
         {
             //Executes the service against a real github repository with a expected result.
 
             var service = new GHProjectDownloaderService();
 
-            var result = service.DownloadProjectInfo("diegobarbosa", "ghdertest");
+            var result = await service.DownloadProjectInfoAsync("diegobarbosa", "ghdertest");
 
             Assert.Equal(10, result.Count);
 

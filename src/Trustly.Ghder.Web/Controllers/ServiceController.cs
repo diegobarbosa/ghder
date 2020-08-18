@@ -23,11 +23,11 @@ namespace Trustly.Ghder.Web.Controllers
 
         // GET api/service/userName/projectName
         [HttpGet("{user}/{project}")]
-        public List<ProjectResult> Get(string user, string project)
+        public async Task<List<ProjectResult>> Get(string user, string project)
         {
-            return new GHProjectDownloaderService().DownloadProjectInfo(user, project);
+            return await new GHProjectDownloaderService().DownloadProjectInfoAsync(user, project);
         }
 
-        
+
     }
 }

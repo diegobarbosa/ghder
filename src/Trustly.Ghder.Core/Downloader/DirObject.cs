@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Trustly.Ghder.Core.Downloader
 {
-    public class DirObject
+    public class DirectoryItem
     {
         public DirObjectType Type { get; set; }
 
