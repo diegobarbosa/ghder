@@ -23,6 +23,7 @@ namespace Trustly.Ghder.Web.Controllers
 
         // GET api/service/userName/projectName
         [HttpGet("{user}/{project}")]
+        [ResponseCache(Location =ResponseCacheLocation.Any, Duration = 60, VaryByQueryKeys = new string[] { "*" })]
         public async Task<List<ProjectResult>> Get(string user, string project)
         {
             return await new GHProjectDownloaderService().DownloadProjectInfoAsync(user, project);

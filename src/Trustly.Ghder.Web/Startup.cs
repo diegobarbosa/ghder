@@ -30,6 +30,7 @@ namespace Trustly.Ghder.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCaching();
             services.AddMvc(config =>
             {
                 config.RespectBrowserAcceptHeader = true;
@@ -66,6 +67,7 @@ namespace Trustly.Ghder.Web
                 app.UseHsts();
             }
 
+            app.UseResponseCaching();
 
             app.UseSwagger(config=> { 
                         
