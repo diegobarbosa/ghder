@@ -46,21 +46,29 @@ namespace Trustly.Ghder.Core.Downloader
 
 
 
-            var dirObjects = new List<DirectoryItem>();
-            await Task.WhenAll(DirectoryItemExtractor.GetDirItems(userAndRepository, dirObjects));
+            var allObjects = new List<DirectoryItem>();
+            await DirectoryItemExtractor.GetDirItems(userAndRepository, allObjects);
 
 
+            var dirObjects = allObjects.Where(x => x.Type == DirObjectType.FILE).ToList();
 
-            var fileTasks = new List<Task>();
-            foreach (var item in dirObjects.Where(x => x.Type == DirObjectType.FILE))
+            var fileTasks = new List<Task<String>>();
+            foreach (var item in dirObjects)
             {
-                fileTasks.Add(FileInfoExtractor.GetFileInfo(item));
+                fileTasks.Add(GhderHttpClient.Instance.GetStringAsync("https://github.com" + item.Url));
             }
             await Task.WhenAll(fileTasks);
 
 
+            Parallel.For(0, dirObjects.Count(), (index) => {
+                FileInfoExtractor.GetFileInfo(dirObjects[index], fileTasks[index].Result);
+            });
 
-            var result = dirObjects.Where(x => x.Type == DirObjectType.FILE)
+           
+
+
+
+            var result = allObjects.Where(x => x.Type == DirObjectType.FILE)
                  .GroupBy(x => x.Extension)
                  .Select(x => new ProjectResult
                  {

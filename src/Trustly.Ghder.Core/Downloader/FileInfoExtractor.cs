@@ -13,10 +13,8 @@ namespace Trustly.Ghder.Core.Downloader
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public static async Task GetFileInfo(DirectoryItem file)
+        public static void GetFileInfo(DirectoryItem file, string dataStr)
         {
-            var dataStr = await GhderHttpClient.Instance.GetStringAsync("https://github.com" + file.Url);
-
             var doc = new HtmlDocument();
             doc.LoadHtml(dataStr);
 

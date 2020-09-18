@@ -19,7 +19,7 @@ namespace Trustly.Ghder.Core.Downloader
             //Dirs at the current folder/page
             var localDirs = new List<DirectoryItem>();
 
-            var tasks = new List<Task<Page>>();
+            var tasks = new List<Task<string>>();
 
             //Start with the root Repository folder
             localDirs.Add(new DirectoryItem { Url = pageUrl, Type = DirObjectType.DIRECTORY });
@@ -29,23 +29,30 @@ namespace Trustly.Ghder.Core.Downloader
             {
 
                 //Downloads all folder pages in parallel
-                foreach (var item in localDirs.Where(x => x.Type == DirObjectType.DIRECTORY))
+                foreach (var item in localDirs)
                 {
-                    tasks.Add(GetPage(GHProjectDownloaderService.GitHubUrl + item.Url));
+                    tasks.Add(GhderHttpClient.Instance.GetStringAsync(GHProjectDownloaderService.GitHubUrl + item.Url));
                 }
-
-                localDirs = new List<DirectoryItem>();
-
 
                 //Waits all folder/pages to be downloaded
                 await Task.WhenAll(tasks);
 
 
+                var pages = new List<Page>();
+                for (int i = 0; i < tasks.Count(); i++)
+                {
+                    pages.Add(new Page { Html = tasks[i].Result, Url = localDirs[i].Url });
+                }
+
+
+                localDirs = new List<DirectoryItem>();
+
+
                 //For each downloaded dir/page
-                foreach (var page in tasks)
+                foreach (var page in pages)
                 {
                     var doc = new HtmlDocument();
-                    doc.LoadHtml(page.Result.Html);
+                    doc.LoadHtml(page.Html);
 
                     //List all rows in a directory.
                     //Each row is a div and each cell is a div.
@@ -53,7 +60,7 @@ namespace Trustly.Ghder.Core.Downloader
 
                     if (divs == null)
                     {
-                        throw new DomainException($"No Rows found in: {page.Result.Url}");
+                        throw new DomainException($"No Rows found in: {page.Url}");
                     }
 
                     foreach (var div in divs)
@@ -92,7 +99,7 @@ namespace Trustly.Ghder.Core.Downloader
 
                 }//foreach
 
-                tasks = new List<Task<Page>>();
+                tasks = new List<Task<string>>();
 
 
             }//While
@@ -108,11 +115,6 @@ namespace Trustly.Ghder.Core.Downloader
             return count.Length == 1 ? string.Empty : count[1].ToLower();
         }
 
-
-        static async Task<Page> GetPage(string url)
-        {
-            return new Page { Html = await GhderHttpClient.Instance.GetStringAsync(url), Url = url };
-        }
 
         public class Page
         {
